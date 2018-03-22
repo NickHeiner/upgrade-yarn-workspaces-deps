@@ -2,17 +2,20 @@
   "name": "local-dev-scratch",
   "private": true,
   "scripts": {
-    "lint:fix": "eslint --cache --fix ."
+    "test": "ava",
+    "lint:fix": "eslint --cache --fix index.js"
   },
-  "dependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-nth": "^1.0.2"
-  },
+  "dependencies": {},
   "eslintConfig": {
     "env": {
       "es6": true,
       "node": true
     },
     "extends": "nth/base"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "eslint": "^4.19.1",
+    "eslint-config-nth": "^1.0.2"
   }
 }
