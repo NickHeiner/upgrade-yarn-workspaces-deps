@@ -5,7 +5,10 @@
     "test": "ava",
     "lint:fix": "eslint --cache --fix index.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "bunyan-format": "^0.2.1"
+  },
   "eslintConfig": {
     "env": {
       "es6": true,
