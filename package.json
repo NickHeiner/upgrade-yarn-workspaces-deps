@@ -14,7 +14,7 @@
       "es6": true,
       "node": true
     },
-    "extends": "nth/base"
+    "extends": "nth"
   },
   "devDependencies": {
     "ava": "^1.2.0",
