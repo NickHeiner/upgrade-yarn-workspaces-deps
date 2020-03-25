@@ -5,7 +5,11 @@
   },
   "license": "MIT",
   "description": "Small tool to update dependencies across many yarn workspaces at once.",
-  "keywords": ["yarn", "cli", "dependencies"],
+  "keywords": [
+    "yarn",
+    "cli",
+    "dependencies"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/NickHeiner/update-yarn-workspaces-deps.git"
@@ -32,5 +36,6 @@
   "devDependencies": {
     "eslint": "^5.13.0",
     "eslint-config-nth": "^1.0.2"
-  }
+  },
+  "version": "1.0.0"
 }
