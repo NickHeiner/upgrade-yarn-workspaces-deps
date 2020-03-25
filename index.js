@@ -28,6 +28,9 @@ _.map(workspaces, ({location}, workspaceName) => {
       .keys()
       .filter(depName => depName.match(pattern))
       .forEach(depName => {
+        // Optimization: Instead of running yarn for each dep, it would be more efficient to batch deps together for 
+        // each package.
+
         const command = `yarn workspace ${workspaceName} add ${addModifierFlag} ${depName}@latest`;
         if (argv.dry) {
           console.log(command);
