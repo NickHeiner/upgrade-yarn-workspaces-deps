@@ -1,9 +1,8 @@
 {
-  "name": "yarn-workspaces-deps",
-  "private": true,
+  "name": "update-yarn-workspaces-deps",
   "bin": "./index.js",
   "scripts": {
-    "test": "ava",
+    "test": "lint",
     "lint:fix": "eslint --cache --fix index.js"
   },
   "dependencies": {
