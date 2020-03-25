@@ -1,18 +1,23 @@
 {
-  "name": "local-dev-scratch",
+  "name": "yarn-workspaces-deps",
   "private": true,
+  "bin": "./index.js",
   "scripts": {
     "test": "ava",
     "lint:fix": "eslint --cache --fix index.js"
   },
   "dependencies": {
     "bunyan": "^1.8.12",
-    "bunyan-format": "^0.2.1"
+    "bunyan-format": "^0.2.1",
+    "load-json-file": "^6.2.0"
   },
   "eslintConfig": {
     "env": {
       "es6": true,
       "node": true
+    },
+    "rules": {
+      "no-console": "off"
     },
     "extends": "nth"
   },
