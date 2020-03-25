@@ -1,6 +1,14 @@
 {
   "name": "update-yarn-workspaces-deps",
-  "bin": "./index.js",
+  "bin": {
+    "update-yarn-workspace-deps": "./index.js"
+  },
+  "description": "Small tool to update dependencies across many yarn workspaces at once.",
+  "keywords": ["yarn", "cli", "dependencies"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NickHeiner/update-yarn-workspaces-deps.git"
+  },
   "scripts": {
     "test": "lint",
     "lint:fix": "eslint --cache --fix index.js"
