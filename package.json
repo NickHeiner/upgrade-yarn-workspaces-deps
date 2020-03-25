@@ -6,8 +6,6 @@
     "lint:fix": "eslint --cache --fix index.js"
   },
   "dependencies": {
-    "bunyan": "^1.8.12",
-    "bunyan-format": "^0.2.1",
     "load-json-file": "^6.2.0",
     "lodash": "^4.17.15",
     "yargs": "^15.3.1"
@@ -23,7 +21,6 @@
     "extends": "nth"
   },
   "devDependencies": {
-    "ava": "^1.2.0",
     "eslint": "^5.13.0",
     "eslint-config-nth": "^1.0.2"
   }
