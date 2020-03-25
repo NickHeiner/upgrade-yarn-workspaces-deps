@@ -3,6 +3,7 @@
   "bin": {
     "update-yarn-workspace-deps": "./index.js"
   },
+  "license": "MIT",
   "description": "Small tool to update dependencies across many yarn workspaces at once.",
   "keywords": ["yarn", "cli", "dependencies"],
   "repository": {
