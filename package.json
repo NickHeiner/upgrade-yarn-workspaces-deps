@@ -1,7 +1,7 @@
 {
-  "name": "update-yarn-workspaces-deps",
+  "name": "upgrade-yarn-workspaces-deps",
   "bin": {
-    "update-yarn-workspace-deps": "./index.js"
+    "upgrade-yarn-workspace-deps": "./index.js"
   },
   "license": "MIT",
   "description": "Small tool to update dependencies across many yarn workspaces at once.",
@@ -37,5 +37,5 @@
     "eslint": "^5.13.0",
     "eslint-config-nth": "^1.0.2"
   },
-  "version": "1.0.0"
+  "version": "1.0.1"
 }

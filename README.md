@@ -1,18 +1,18 @@
-# Update Yarn Workspaces Deps
-Super simple tool to update deps across all your yarn workspaces.
+# Upgrade Yarn Workspaces Deps
+Super simple tool to upgrade deps across all your yarn workspaces.
 
-Problem: You have a project with many workspaces, and many dependencies, and you want to update a subset of them.
+Problem: You have a project with many workspaces, and many dependencies, and you want to upgrade a subset of them.
 
 Solution:
 
 ```
-$ update-yarn-workspaces-deps/index.js --pattern <regex that will match the package name you want to update>
+$ upgrade-yarn-workspaces-deps/index.js --pattern <regex that will match the package name you want to upgrade>
 ```
 
-For instance, to update all Jest-related packages:
+For instance, to upgrade all Jest-related packages:
 
 ```
-$ update-yarn-workspace-deps --pattern '^jest' --dry
+$ upgrade-yarn-workspace-deps --pattern '^jest' --dry
 yarn workspace nf-foo-framework add --dev jest-matcher-deep-close-to@latest
 yarn workspace odp add  jest-diff@latest
 yarn workspace eslint-plugin-foo add --dev jest-util@latest

@@ -18,28 +18,32 @@ const {argv} = require('yargs')
 const pattern = new RegExp(argv.pattern);
 
 const workspaces = JSON.parse(JSON.parse(execSync('yarn workspaces info --json')).data);
+const workspaceNames = Object.keys(workspaces);
 
 _.map(workspaces, ({location}, workspaceName) => {
   const packageJson = loadJsonFile.sync(path.join(location, 'package.json'));
 
   const updateDependenciesIfNeeded = name => {
     const addModifierFlag = name === 'devDependencies' ? '--dev' : '';
-    _(packageJson[name])
+    const packageInstallSpecs = _(packageJson[name])
       .keys()
+      .pullAll(workspaceNames)
       .filter(depName => depName.match(pattern))
-      .forEach(depName => {
-        // Optimization: Instead of running yarn for each dep, it would be more efficient to batch deps together for 
-        // each package.
+      .map(depName => `${depName}@latest`)
+      .value();
 
-        const command = `yarn workspace ${workspaceName} add ${addModifierFlag} ${depName}@latest`;
-        if (argv.dry) {
-          console.log(command);
-        } else {
-          execSync(command, {
-            stdio: 'inherit'
-          });
-        }
+    if (!packageInstallSpecs.length) {
+      return;
+    }
+
+    const command = `yarn workspace ${workspaceName} add ${addModifierFlag} ${packageInstallSpecs.join(' ')}`;
+    if (argv.dry) {
+      console.log(command);
+    } else {
+      execSync(command, {
+        stdio: 'inherit'
       });
+    }
   };
 
   updateDependenciesIfNeeded('dependencies');
