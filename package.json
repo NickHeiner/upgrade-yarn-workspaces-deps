@@ -34,7 +34,7 @@
     "extends": "nth"
   },
   "devDependencies": {
-    "eslint": "^5.13.0",
+    "eslint": "^6.8.0",
     "eslint-config-nth": "^1.0.2"
   },
   "version": "1.0.1"
