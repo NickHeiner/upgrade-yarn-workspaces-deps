@@ -4,7 +4,7 @@
     "upgrade-yarn-workspace-deps": "./index.js"
   },
   "license": "MIT",
-  "description": "Small tool to update dependencies across many yarn workspaces at once.",
+  "description": "Small tool to upgrade dependencies across many yarn workspaces at once.",
   "keywords": [
     "yarn",
     "cli",
@@ -12,7 +12,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/NickHeiner/update-yarn-workspaces-deps.git"
+    "url": "https://github.com/NickHeiner/upgrade-yarn-workspaces-deps.git"
   },
   "scripts": {
     "test": "lint",

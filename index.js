@@ -23,7 +23,7 @@ const workspaceNames = Object.keys(workspaces);
 _.map(workspaces, ({location}, workspaceName) => {
   const packageJson = loadJsonFile.sync(path.join(location, 'package.json'));
 
-  const updateDependenciesIfNeeded = name => {
+  const upgradeDependenciesIfNeeded = name => {
     const addModifierFlag = name === 'devDependencies' ? '--dev' : '';
     const packageInstallSpecs = _(packageJson[name])
       .keys()
@@ -46,6 +46,6 @@ _.map(workspaces, ({location}, workspaceName) => {
     }
   };
 
-  updateDependenciesIfNeeded('dependencies');
-  updateDependenciesIfNeeded('devDependencies');
+  upgradeDependenciesIfNeeded('dependencies');
+  upgradeDependenciesIfNeeded('devDependencies');
 });
