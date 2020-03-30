@@ -1,5 +1,6 @@
 {
   "name": "upgrade-yarn-workspaces-deps",
+  "version": "1.1.0",
   "bin": {
     "upgrade-yarn-workspace-deps": "./index.js"
   },
@@ -36,6 +37,5 @@
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-nth": "^1.0.2"
-  },
-  "version": "1.0.1"
+  }
 }
