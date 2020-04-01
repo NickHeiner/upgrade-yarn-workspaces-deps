@@ -6,7 +6,7 @@ Problem: You have a project with many workspaces, and many dependencies, and you
 Solution:
 
 ```
-$ upgrade-yarn-workspaces-deps/index.js --pattern <regex that will match the package name you want to upgrade>
+$ upgrade-yarn-workspaces-deps --pattern <regex that will match the package name you want to upgrade>
 ```
 
 For instance, to upgrade all Jest-related packages:
