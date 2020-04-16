@@ -25,9 +25,10 @@ const {argv} = require('yargs')
     description: 'Remove packages instead of adding them.',
     conflicts: ['install-version']
   })
-  .option('print-matching-packages', {
+  .option('print-metadata', {
     type: 'boolean',
-    description: 'Print all package names that will be updated, and exit without actually updating.'
+    description: 'Print all dependencies and dependents that will be touched. Requires --dry to also be passed.',
+    implies: ['dry']
   })
   .option('install-version', {
     type: 'string',
@@ -44,7 +45,14 @@ const pattern = new RegExp(argv.pattern);
 const workspaces = JSON.parse(JSON.parse(execSync('yarn workspaces info --json')).data);
 const workspaceNames = Object.keys(workspaces);
 
-const packageNames = _(workspaces)
+const merge = (...sources) => _.mergeWith({}, ...sources, (objValue, srcValue) => {
+  if (Array.isArray(objValue) && Array.isArray(srcValue)) {
+    return _.uniq([...objValue, ...srcValue]);
+  }
+  return srcValue;
+})
+
+const metadata = _(workspaces)
   .map(({location}, workspaceName) => {
     const packageJson = loadJsonFile.sync(path.join(location, 'package.json'));
 
@@ -64,7 +72,9 @@ const packageNames = _(workspaces)
           // eslint-disable-next-line max-len
           `yarn workspace ${workspaceName} ${yarnCommand} ${addModifierFlag} ${packageInstallSpecs.join(' ')} ${yarnArgs}`.trim();
         if (argv.dry) {
-          console.log(command);
+          if (!argv.printMetadata) {
+            console.log(command);
+          }
         } else {
           console.log(chalk.underline(`Executing: "${command}"`));
           execSync(command, {
@@ -75,21 +85,17 @@ const packageNames = _(workspaces)
         }
       }
 
-      return packageNames;
+      return {dependencies: packageNames, dependents: packageNames.length ? [workspaceName] : undefined};
     };
 
-    return [
-      ...upgradeDependenciesIfNeeded('dependencies'),
-      ...upgradeDependenciesIfNeeded('devDependencies')
-    ];
+    return merge(
+      upgradeDependenciesIfNeeded('dependencies'),
+      upgradeDependenciesIfNeeded('devDependencies')
+    );
   })
   .flatten()
-  .uniq()
-  .value();
+  .reduce((acc, el) => merge(acc, el));
 
-if (argv.printMatchingPackages && packageNames.length) {
-  console.log('The following packages will be updated:');
-  packageNames.forEach(package => console.log(`* ${package}`));
-} else if (!packageNames.length) {
-  console.log(`No packages found matching pattern ${chalk.red(pattern)}`);
+if (argv.printMetadata) {
+  console.log(JSON.stringify(metadata));
 }

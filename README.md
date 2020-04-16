@@ -34,15 +34,15 @@ Run `--help` for more detail:
 
 ```
 Options:
-  --help                     Show help                                 [boolean]
-  --version                  Show version number                       [boolean]
-  --pattern                  Regex that will be matched against the dependency
-                             name                            [string] [required]
-  --dry                      If true, print the yarn commands that will be run,
-                             but do not actually run them.             [boolean]
-  --remove                   Remove packages instead of adding them.   [boolean]
-  --print-matching-packages  Print all package names that will be updated, and
-                             exit without actually updating.           [boolean]
-  --install-version          The version to install.                    [string]
+  --help             Show help                                         [boolean]
+  --version          Show version number                               [boolean]
+  --pattern          Regex that will be matched against the dependency name
+                                                             [string] [required]
+  --dry              If true, print the yarn commands that will be run, but do
+                     not actually run them.                            [boolean]
+  --remove           Remove packages instead of adding them.           [boolean]
+  --print-metadata   Print all dependencies and dependents that will be touched.
+                     Requires --dry to also be passed.                 [boolean]
+  --install-version  The version to install.                            [string]
 
 ```
