@@ -11,7 +11,10 @@ const {argv} = require('yargs')
   .strict()
   .option('pattern', {
     type: 'string',
-    description: 'Regex that will be matched against the dependency name'
+    description: 'Regex that will be matched against the dependency name. ' +
+      "Tip: for an exact match, pass '^package-name$'. " +
+      'To match packages that match only part of the pattern, use negative-lookaheads. ' +
+      "For instance, to match all 'babel' packages but not 'babel-jest', pass 'babel(?!-jest)'."
   })
   // This makes --pattern appear twice in the output.
   // https://github.com/yargs/yargs/issues/1604
